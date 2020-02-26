@@ -24,7 +24,7 @@ function! bookmark#selector#skk#call() abort
       let page = min([pagecnt - 1, page + 1])
     else
       let idx = index(chars, c)
-      if idx != -1
+      if idx != -1 && idx < len(sl)
         return bookmark#action(sl[idx])
       endif
       return
