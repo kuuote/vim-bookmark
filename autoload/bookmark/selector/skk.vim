@@ -13,11 +13,11 @@ function! bookmark#selector#skk#call() abort
   let pagecnt = ceil(len(l)/len(keys))
   let page = 0
   while 1
-    redraw
     let s = page * len(keys)
     let sl = l[s : s + len(keys) - 1]
     echo join(map(copy(sl), "printf('%s: %s', keys[v:key], v:val)"), "\n") .. "\n>"
     let c = getchar()
+    redraw
     if c == prev
       let page = max([0, page - 1])
     elseif c == next
@@ -27,6 +27,7 @@ function! bookmark#selector#skk#call() abort
       if idx != -1 && idx < len(sl)
         return bookmark#action(sl[idx])
       endif
+      echo "Cancelled"
       return
     endif
   endwhile

@@ -38,7 +38,9 @@ function! bookmark#action(file) abort
     echo s:helpmsg
     call bookmark#action(a:file)
   elseif c == 100 "d
-    return bookmark#remove(a:file)
+    call bookmark#remove(a:file)
+  else
+    echo "Cancelled"
   endif
 endfunction
 
