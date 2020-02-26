@@ -24,13 +24,13 @@ endfunction
 
 const s:helpmsg = "d: delete bookmark\n"
           \ .. "?: show help\n"
-          \ .. "<CR>: jump to bookmark\n"
+          \ .. "<Space>: jump to bookmark\n"
 
 function! bookmark#action(file) abort
   echo "Action(Press ? key to show help):"
   let c = getchar()
   redraw
-  if c == 13      "<CR>
+  if c == 32      "<Space>
     "MRU風味
     call bookmark#add(a:file, v:false)
     execute "buf" bufnr(a:file, v:true)
